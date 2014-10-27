@@ -29,7 +29,7 @@ var Engine = (function(global) {
     }
 
     function update(dt) {
-        updateEntities(dt);
+      //  updateEntities(dt);
         // checkCollisions();
     }
 
@@ -63,10 +63,14 @@ var Engine = (function(global) {
     }
 
     function renderEntities() {
+        
         allEnemies.forEach(function(enemy) {
+            console.log(enemy);
             enemy.render();
         });
+        /*
         player.render();
+        */
     }
 
     function reset() {
@@ -80,7 +84,10 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png'
     ]);
+
+    // This initiates the engine
     Resources.onReady(init);
 
+    // What does this do?
     global.ctx = ctx;
 })(this);
