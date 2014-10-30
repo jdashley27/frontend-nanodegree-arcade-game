@@ -37,10 +37,10 @@ var Player = function() {
                                 "images/char-cat-girl.png", 
                                 "images/char-horn-girl.png", 
                                 "images/char-pink-girl.png", 
-                                "char-princess-girl"
+                                "images/char-princess-girl.png"
             ];
 
-            var i = Math.floor(Math.random() * ( (playerImage.length - 1) - 0) + 0);
+            var i = Math.floor(Math.random() * playerImage.length);
 
             console.log(i);
 
