@@ -21,7 +21,6 @@ var Gem = function() {
         var posX = [2, 102, 202, 302, 402];
         var i = Math.floor(Math.random() * posX.length);
         this.x = posX[i];
-        console.log(posX[1]);
     }
 
     this.y = 40;
@@ -33,7 +32,7 @@ var Gem = function() {
     this.hitBox = 60;
 }
 
-// Place in the Gem(s)
+// Render the Gem
 Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
@@ -44,7 +43,7 @@ gem.setX();
 gem.setY();
 
 // Enemies our player must avoid
-var Enemy = function(x, y, speed, name) {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -53,7 +52,19 @@ var Enemy = function(x, y, speed, name) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = (Math.floor(Math.random() * 10)) * (Math.floor(Math.random() * 15)) + 10;
+    this.setSpeed = function() {
+        var speed = (Math.floor(Math.random() * 10)) * (Math.floor(Math.random() * 15)) + 10;
+            this.speed = speed;
+    }
+    
+    this.setY = function() {
+            var posY = [50, 140, 230];
+            var i = Math.floor(Math.random() * posY.length);
+
+            this.y = posY[i];
+    }
+
     this.hitBox = 60;
     this.name = name;
 }
@@ -65,6 +76,7 @@ Enemy.prototype.update = function(dt) {
     // reset it's position, or remove it and add a new enemy?
     if(this.x > 505) {
         this.x = -50;
+        this.setSpeed();
     }
     else {
         this.x = this.x + this.speed * dt;
@@ -102,9 +114,10 @@ var Player = function() {
 
     this.begPosX = 200; // Beginning X position, to always reset player to
     this.begPosY = 380; // Beginning Y position, to always reset player to
-    this.x = this.begPosX;
-    this.y = this.begPosY;
+    this.x = this.begPosX; // Player's starting x position
+    this.y = this.begPosY; // Player's starting y position
     this.hitBox = 60;
+    this.gemCount = 0;
 
     this.handleInput = function(keyDirection) {
 
@@ -135,7 +148,6 @@ var Player = function() {
             }
     } // end handleInput()
 
-    // For collision detection?
     this.update = function() {
     }
 }
@@ -145,17 +157,12 @@ Player.prototype.render = function() {
 }
 
 // Now instantiate your objects.
-var enemyA = new Enemy(0, 50, 80, "A");
-var enemyB = new Enemy(0, 140, 60, "B");
-var enemyC = new Enemy(0, 230, 20, "C");
+var enemyA = new Enemy(-50, 50);
+var enemyB = new Enemy(-250, 140);
+var enemyC = new Enemy(-150, 230);
 
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [enemyA, enemyB, enemyC];
-
-// Should loop through the allEnemies and update position
-//enemyA.update(20);
-
-// How to add new enemies to the map?
 
 // Place the player object in a variable called player
 var player = new Player();

@@ -27,7 +27,6 @@ var Engine = (function(global) {
         
         // Calculate the enemies' hitbox and see if they collide with the player
         allEnemies.forEach(function(enemy) {
-            // enemy.hitbox
            
 
             // Need to determine if the enemy crosses into the players field of vision
@@ -46,13 +45,16 @@ var Engine = (function(global) {
                 (gem.x - gem.hitBox) < player.x &&
                 gem.x > (player.x - player.hitBox) )
             {
-                console.log('gem collision');
+                // set a new gem location/image
+                gem.setX();
+                gem.setY();
+                gem.setSprite();
+
                 // add the gem points to the player's total
-                // remove the gem from the screen
-                // create a new Gem
-                
+                player.gemCount++;
 
-
+                // Add more enemies
+                addEnemies(player.gemCount);
             }
 
         });
@@ -139,4 +141,16 @@ var Engine = (function(global) {
     Resources.onReady(init);
 
     global.ctx = ctx;
+
+    function addEnemies(count) {
+
+        for( i=0; i < count + count; i++) {
+            var enemy = new Enemy(-200, 50); // need to randomize position
+            
+            enemy.setY();
+            enemy.render();
+            allEnemies.push(enemy);
+        }
+    }
+
 })(this);
