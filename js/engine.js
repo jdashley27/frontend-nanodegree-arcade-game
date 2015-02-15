@@ -4,7 +4,8 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         patterns = {},
-        lastTime;
+        lastTime,
+        playerScore; // the player's score
 
     canvas.width = 505;
     canvas.height = 606;
@@ -21,16 +22,50 @@ var Engine = (function(global) {
         win.requestAnimationFrame(main);
     };
 
-    function init() {
+    // Should define a hit box for collisions
+    function checkCollisions() {
+        
+        // Calculate the enemies' hitbox and see if they collide with the player
+        allEnemies.forEach(function(enemy) {
+            // enemy.hitbox
+           
 
-        reset();
+            // Need to determine if the enemy crosses into the players field of vision
+            if( (enemy.y - enemy.hitBox) < player.y  && 
+                enemy.y > (player.y - player.hitBox) &&
+                (enemy.x - enemy.hitBox) < player.x &&
+                enemy.x > (player.x - player.hitBox) )
+            {
+                // Resets the player
+                reset();
+            }
+
+            // Detect if player collides with Gem
+            if( (gem.y - gem.hitBox) < player.y &&
+                gem.y > (player.y - player.hitBox) &&
+                (gem.x - gem.hitBox) < player.x &&
+                gem.x > (player.x - player.hitBox) )
+            {
+                console.log('gem collision');
+                // add the gem points to the player's total
+                // remove the gem from the screen
+                // create a new Gem
+                
+
+
+            }
+
+        });
+    }
+
+    function init() {
         lastTime = Date.now();
         main();
     }
 
     function update(dt) {
-      //  updateEntities(dt);
-        // checkCollisions();
+        updateEntities(dt);
+        checkCollisions();
     }
 
     function updateEntities(dt) {
@@ -70,11 +105,14 @@ var Engine = (function(global) {
         });
 
         player.render();
+        gem.render();
         
     }
 
     function reset() {
-        // noop
+        //reset player back to their beginning position
+        player.x = player.begPosX;
+        player.y = player.begPosY;
     }
 
     Resources.load([
@@ -100,6 +138,5 @@ var Engine = (function(global) {
     // This initiates the engine
     Resources.onReady(init);
 
-    // What does this do?
     global.ctx = ctx;
 })(this);
