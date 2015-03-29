@@ -25,6 +25,11 @@ var Engine = (function(global) {
     // Should define a hit box for collisions
     function checkCollisions() {
         
+        // Reset the player's position when then hit the water.
+        if( player.y < 0) {
+            reset();
+        }
+
         // Calculate the enemies' hitbox and see if they collide with the player
         allEnemies.forEach(function(enemy) {
            

@@ -135,9 +135,7 @@ var Player = function() {
             }
             
             if(keyDirection == "up") {
-                if( (player.y - 80) > 0) {
                     player.y = player.y - 80;
-                }
             }
             
             if(keyDirection == "down") {

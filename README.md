@@ -8,6 +8,9 @@
 4. Ideas To Enhance The Game
 5. Synopsis
 
+## Update
+I've added a reset event to trigger when the player has reached the water.
+
 ##Overview
 I found this game to be a challenging project, as I don't have a lot of experience building games. I had some struggle with figuring out how the various mechanics of the game worked, and to get all of assets to render correctly. The most challenging aspect of this was the time it required to play around with the engine, and understand how to execute the components of the game. With this said, I was able to get a stable version of the game to work. Unfortunately, there are so many more things I would like to do to this, but must move on in favor of progressing on to other projects.
 
