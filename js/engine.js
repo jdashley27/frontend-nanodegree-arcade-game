@@ -20,7 +20,7 @@ var Engine = (function(global) {
 
         lastTime = now;
         win.requestAnimationFrame(main);
-    };
+    }
 
     // Should define a hit box for collisions
     function checkCollisions() {

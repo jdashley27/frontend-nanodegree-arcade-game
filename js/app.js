@@ -2,7 +2,7 @@
 var Gem = function() {
 
     // Generate random sprite image
-    this.sprite ="images/gem-blue.png";
+    this.sprite = "images/gem-blue.png";
 
 
     this.setSprite = function() {
@@ -21,21 +21,21 @@ var Gem = function() {
         var posX = [2, 102, 202, 302, 402];
         var i = Math.floor(Math.random() * posX.length);
         this.x = posX[i];
-    }
+    };
 
     this.y = 40;
     this.setY = function() {
         var posY = [40, 120, 200];
         var i = Math.floor(Math.random() * posY.length);
         this.y = posY[i];
-    }
+    };
     this.hitBox = 60;
-}
+};
 
 // Render the Gem
 Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 var gem = new Gem();
 gem.setSprite();
@@ -56,18 +56,18 @@ var Enemy = function(x, y) {
     this.setSpeed = function() {
         var speed = (Math.floor(Math.random() * 10)) * (Math.floor(Math.random() * 15)) + 10;
             this.speed = speed;
-    }
+    };
     
     this.setY = function() {
             var posY = [50, 140, 230];
             var i = Math.floor(Math.random() * posY.length);
 
             this.y = posY[i];
-    }
+    };
 
     this.hitBox = 60;
     this.name = name;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -82,12 +82,12 @@ Enemy.prototype.update = function(dt) {
         this.x = this.x + this.speed * dt;
     }
     
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 
 // Now write your own player class
@@ -109,7 +109,7 @@ var Player = function() {
 
             var i = Math.floor(Math.random() * playerImage.length);
             this.sprite = playerImage[i]; 
-    }
+    };
 
 
     this.begPosX = 200; // Beginning X position, to always reset player to
@@ -144,15 +144,15 @@ var Player = function() {
                     player.y = player.y + 80;
                 }
             }
-    } // end handleInput()
+    }; // end handleInput()
 
     this.update = function() {
-    }
-}
+    };
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now instantiate your objects.
 var enemyA = new Enemy(-50, 50);

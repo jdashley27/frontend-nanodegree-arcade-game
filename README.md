@@ -8,6 +8,13 @@
 4. Ideas To Enhance The Game
 5. Synopsis
 
+##Update 2
+I've ran the code through JSHint (online: http://jshint.com/), and added semi-colons to all of the areas the linter suggested.
+
+I've looked through the files, and cannot see where the names of the files differ from the way they are called within the system. Example: rock.png is named rock.png and called exactly as rock.png. The only area I could see being an issue would be the images being called by hyphen notation, eg. char-princess.png, instead of charPrincess.png.
+
+I've also updated the README file to include instructions on how to play the game. 
+
 ## Update
 I've added a reset event to trigger when the player has reached the water.
 
@@ -15,6 +22,8 @@ I've added a reset event to trigger when the player has reached the water.
 I found this game to be a challenging project, as I don't have a lot of experience building games. I had some struggle with figuring out how the various mechanics of the game worked, and to get all of assets to render correctly. The most challenging aspect of this was the time it required to play around with the engine, and understand how to execute the components of the game. With this said, I was able to get a stable version of the game to work. Unfortunately, there are so many more things I would like to do to this, but must move on in favor of progressing on to other projects.
 
 ##Playing The Game
+To start the game, go to the repo: https://github.com/jdashley27/frontend-nanodegree-arcade-game, click on "Download Zip". Open up the file in your downloads folder, and copy the entire directory to your desktop. Open up the directory, and navigate to where the index.html file is located. Open it up in your browser, and you should be good to begin playing the game.
+
 The mechanics of the game are very simple. You can move the player left, up, down, and right by using their respective arrow keys on the keyboard. The objective of the game is to keep collecting gems, while avoiding being hit by the bugs. More bugs will spawn with every acquired gem. At this point, there is no end to the game.
 
 ##Game Mechanics
